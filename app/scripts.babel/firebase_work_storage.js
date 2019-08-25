@@ -198,8 +198,8 @@ export default class FirebaseWorkStorage {
 
   _initializeFirebase() {
     const config = {
-      apiKey: "AIzaSyCZDGsxx5VbFDwo9lRe2vDuWf4aS5-XmNc",
-      databaseURL: "https://mindmap-tab.firebaseio.com"
+      apiKey: "AIzaSyASjmnpUYp9YEbY-lIsVKZdOqTnKF_KTFA",
+      databaseURL: "https://khamatab.firebaseio.com"
     };
     firebase.initializeApp(config);
   }
