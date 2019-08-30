@@ -646,6 +646,9 @@ class Newtab {
 
   drawMindmap(callback) {
     let source = this.editor.getValue();
+    $("div.mermaid").text(source);
+    $("div.mermaid").removeAttr("data-processed");
+    window.mermaid.init();
     let root = new Parser().parse(source, this.isFilterStrikeThroughText());
     if (root) {
       this.currentWork.content = source;

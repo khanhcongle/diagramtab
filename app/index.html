@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles/newtab.css" />
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
   <script type="text/javascript" src="bower_components/jcanvas/jcanvas.js"></script>
@@ -171,7 +172,14 @@
       </div>
       <div id="rightColumn" class="col-lg-8">
         <div class="canvas-container">
-          <canvas id="target" width="50" height="50"></canvas>
+          <canvas style="display: none" id="target" width="50" height="50"></canvas>
+          <div class="mermaid">
+              graph TD;
+                  A-->B(" fa:fa-smile");
+                  A-->Conkia(" fa:fa-car car_");
+                  B-->D;
+                  Conkia-->D;
+          </div>
         </div>
       </div>
     </div>
@@ -294,7 +302,7 @@
 
   <textarea id="copyBuffer"></textarea>
 
+  <script src="./js/mermaid.min.js"></script>
   <script type="text/javascript" src="scripts/bundle.js"></script>
-
 </body>
 </html>
