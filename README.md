@@ -7,6 +7,10 @@ MindMap Tab
 
 This is a Chrome extension to draw Mind Map diagram quickly and easily on New Tab for Chrome.
 
+try:
+npm install
+gulp build
+
 License
 -------
 

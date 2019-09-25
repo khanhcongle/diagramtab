@@ -176,10 +176,12 @@
           <div class="mermaid">
             graph TD
               id1[Rectangle] -->|comment in line| id2((Circle))
-              id2 --> C{diamond}
-              C -->|Laptop| D[fa:fa-laptop Laptop icon]
-              C ==>|Phone| E[fa:fa-mobile Phone icon]
-              C -->|Car| F[fa:fa-car Car icon]
+              id2 --> C{Object first}
+              C -->|type?| D[fa:fa-cube Data types-]
+              C ==>|value?| E[fa:fa-balance-scale  Length-format-relational-constrains-]
+              C -->|CRUD?| F[fa:fa-industry Services-]
+              C -->|Display?| G[fa:fa-video-camera Converters-]
+              C -->|Validation?| H[fa:fa-search Validators-Messages-services-]
               id1===C
               
               style id1 fill:#f9f,stroke:#333,stroke-width:4px
