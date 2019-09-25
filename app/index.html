@@ -21,12 +21,12 @@
   <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
   <script type="text/javascript" src="libs/ace/ace.js"></script>
-  <title>MindMap Tab</title>
+  <title>Diagram Tab</title>
 </head>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">MindMap Tab</a>
+    <a class="navbar-brand" href="#">Diagram Tab</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -174,18 +174,23 @@
         <div class="canvas-container">
           <canvas style="display: none" id="target" width="50" height="50"></canvas>
           <div class="mermaid">
-            graph TD
-              id1[Rectangle] -->|comment in line| id2((Circle))
-              id2 --> C{Object first}
-              C -->|type?| D[fa:fa-cube Data types-]
-              C ==>|value?| E[fa:fa-balance-scale  Length-format-relational-constrains-]
-              C -->|CRUD?| F[fa:fa-industry Services-]
-              C -->|Display?| G[fa:fa-video-camera Converters-]
-              C -->|Validation?| H[fa:fa-search Validators-Messages-services-]
-              id1===C
-              
-              style id1 fill:#f9f,stroke:#333,stroke-width:4px
-              style id2 fill:#ccf,stroke:#f66,stroke-width:8px,stroke-dasharray: 1, 10
+            graph TD %%DialogDesignPattern
+                ViewGroupBean --> FirstActivityDialogBean
+                ViewGroupBean --> SecondActivityDialogBean
+                
+                FirstActivityDialogBean --> ActivitiesManagementBean
+                SecondActivityDialogBean --> ActivitiesManagementBean
+                
+                ActivitiesManagementBean --> ObjectViewBean
+                ActivitiesManagementBean --> ObjectAddOrUpdateBean
+                ActivitiesManagementBean --> ObjectForwardBean 
+                
+                ObjectViewBean --> CRUDServices
+                ObjectAddOrUpdateBean --> CRUDServices
+                ObjectForwardBean  --> ConverterServices
+                
+                CRUDServices --> Entities
+                ConverterServices --> Entities
           </div>
         </div>
       </div>

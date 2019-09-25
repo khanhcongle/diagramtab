@@ -9,6 +9,7 @@ This is a Chrome extension to draw Mind Map diagram quickly and easily on New Ta
 
 try:
 npm install
+bower install
 gulp build
 
 License

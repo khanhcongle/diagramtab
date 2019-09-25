@@ -322,7 +322,8 @@ class Newtab {
   }
 
   onBtnHowToUseClicked() {
-    let text = "MindMap Tab\n\tAbout\n\t\tCopyright (C) 2017-${year} Yoichiro Tanaka\n\t\tAll rights reserved\n\t\t[GitHub](https://github.com/yoichiro/mindmap_tab)\n\t\t[Issue Tracker](https://github.com/yoichiro/mindmap_tab/issues)\n\t\t[Chrome WebStore](https://chrome.google.com/webstore/detail/mindmap-tab/mkgjficalhplaenklhejcbmlkonbakjj)\n\tHow to Use\n\t\tBasic\n\t\t\tHow to draw Mindmap diagram\n\t\t\t\tWrite an indented text\n\t\t\t\tEach line becomes a node\n\t\t\tHow to indent\n\t\t\t\tWith TAB characters\n\t\t\t\tWith 4 white space characters\n\t\tFormats\n\t\t\t[LINK TITLE](LINK URL)\n\t\t\t\tClick when you want to open\n\t\t\t\tShift+Click when you want to open with new window\n\t\t\t**BOLD**\n\t\t\t~~STRIKE THROUGH~~\n\t\t\t2019/04/24 EVENT\n\t\t\t\tYYYY/MM/DD ...\n\t\t\t\tShown on Calendar View\n";
+    let text = "";
+    text = "Diagram Tab\n\tAbout\n\t\tCopyright (C) 2019-${year} Khanh Le\n\t\tAll rights reserved\n";
     text = text.replace("${year}", new Date().getFullYear());
     const work = new Work(Date.now(), text, Date.now());
     work.isSave = false;
