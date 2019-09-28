@@ -4,8 +4,9 @@ html, body#diagramTabId {
   background-color: white;
 }
 
-body#diagramTabId div{
+body#diagramTabId foreignObject div {
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
 }
 
 #source {

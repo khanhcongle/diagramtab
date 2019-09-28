@@ -42,12 +42,14 @@ class Newtab {
   // Ace Editor
 
   initializeAceEditor() {
+    //config reference: https://github.com/ajaxorg/ace/Readme.md
     this.showStatusMessage("Initializing Ace Editor.");
 
     let editor = ace.edit("source");
     // editor.setFontSize(13);
+    //fontFamily: "MeiryoKe_Gothic, \"Courier New\", Courier, Monaco, Mento, monospace",
     editor.setOptions({
-      fontFamily: "MeiryoKe_Gothic, \"Courier New\", Courier, Monaco, Mento, monospace",
+      fontFamily: "\"Roboto Mono\", Consolas, Courier, Monaco, Mento, monospace",
       fontSize: "14px"
     });
     editor.setDisplayIndentGuides(true);
@@ -58,6 +60,9 @@ class Newtab {
     editor.setHighlightActiveLine(true);
     editor.renderer.setShowGutter(false);
     editor.$blockScrolling = Infinity;
+    var LanguageMode = ace.require("ace/mode/javascript").Mode;
+    editor.getSession().setMode(new LanguageMode());
+    editor.setTheme("ace/theme/eclipse");
 
     this.showStatusMessage("Initialized Ace Editor.");
 
