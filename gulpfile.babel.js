@@ -23,6 +23,7 @@ gulp.task("extras", () => {
     "app/_locales/**",
     "!app/scripts.babel",
     "app/scripts.min/mermaid.min.js",
+    "app/scripts.min/mermaid.config.js",
     "app/scripts/bundle.js",
     "app/scripts/background.js",
     "app/bower_components/jquery/dist/jquery.min.js",

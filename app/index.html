@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
   <script type="text/javascript" src="bower_components/jcanvas/jcanvas.js"></script>
@@ -23,8 +24,7 @@
   <script type="text/javascript" src="libs/ace/ace.js"></script>
   <title>Diagram Tab</title>
 </head>
-<body>
-
+<body id="diagramTabId">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Diagram Tab</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,88 +63,7 @@
             <a class="dropdown-item" href="#" id="btnLayoutLeftOnly">Text only</a>
           </div>
         </li>
-<!--
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" id="navbarConfiguration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Style
-          </a>
-          <div class="dropdown-menu" id="configuration" aria-labelledby="navbarConfiguration">
-            <form class="px-4 py-3">
-              <div class="form-group">
-                <label>Line Color Mode</label><br />
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="lineColorMode" id="btnLineColorModeOn" value="on">
-                  <label class="form-check-label" for="btnLineColorModeOn">On</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="lineColorMode" id="btnLineColorModeOff" value="off">
-                  <label class="form-check-label" for="btnLineColorModeOff">Off</label>
-                </div>
-              </div>
 
-              <div class="form-group">
-                <label>Filter Strike Through Text Mode</label><br />
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="filterModel" id="btnFilterStrikeThroughTextModeOn" value="on">
-                  <label class="form-check-label" for="btnFilterStrikeThroughTextModeOn">Show</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="filterModel" id="btnFilterStrikeThroughTextModeOff" value="off">
-                  <label class="form-check-label" for="btnFilterStrikeThroughTextModeOff">Hide</label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="fontSizeLabel">Font Size</label><br />
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize10" value="10">
-                  <label class="form-check-label" for="btnFontSize10">10</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize12" value="12">
-                  <label class="form-check-label" for="btnFontSize12">12</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize14" value="14">
-                  <label class="form-check-label" for="btnFontSize14">14</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize16" value="16">
-                  <label class="form-check-label" for="btnFontSize16">16</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize18" value="18">
-                  <label class="form-check-label" for="btnFontSize18">18</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize24" value="24">
-                  <label class="form-check-label" for="btnFontSize24">24</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="fontSize" id="btnFontSize36" value="36">
-                  <label class="form-check-label" for="btnFontSize36">36</label>
-                </div>
-              </div>
-
-              <div>
-                <label for="wingLabel">Mindmap Layout</label><br />
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="wingMode" id="btnWingModeBoth" value="both">
-                  <label class="form-check-label" for="btnWingModeBoth">Both</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="wingMode" id="btnWingModeLeftOnly" value="left">
-                  <label class="form-check-label" for="btnWingModeLeftOnly">Left Only</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="wingMode" id="btnWingModeRightOnly" value="right">
-                  <label class="form-check-label" for="btnWingModeRightOnly">Right Only</label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
-      -->
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarSession" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Session
@@ -167,7 +86,8 @@
       <div id="rightColumn" class="col-lg-8">
         <div class="canvas-container">
           <canvas style="display: none" id="target" width="50" height="50"></canvas>
-          <div class="mermaid">
+          <div class="mermaid" style="width: 1920px;
+                                      height:1920px;">
             graph TD %%DialogDesignPattern
                 ViewGroupBean --> FirstActivityDialogBean
                 ViewGroupBean --> SecondActivityDialogBean
@@ -195,9 +115,9 @@
     <div class="statusBar">
       <div id="statusMessage"></div>
       <div class="float-right footerButtons">
-        <img id="footerBtnLayoutRightMain" src="images/focus_mindmap.gif" title="Focus on MindMap" />
+        <img id="footerBtnLayoutRightMain" src="images/focus_mindmap.gif" title="Focus on Diagram" />
         <img id="footerBtnLayoutLeftMain" src="images/focus_text.gif" title="Focus on Text" />
-        <img id="footerBtnLayoutRightOnly" src="images/mindmap.gif" title="MindMap only" />
+        <img id="footerBtnLayoutRightOnly" src="images/mindmap.gif" title="Diagram only" />
         <img id="footerBtnLayoutLeftOnly" src="images/text.gif" title="Text only" />
       </div>
     </div>
@@ -292,13 +212,7 @@
   <textarea id="copyBuffer"></textarea>
 
   <script type="text/javascript" src="scripts.min/mermaid.min.js"></script>
-  <script type="text/javascript"> 
-   mermaid.initialize({
-      theme: 'neutral',
-      logLevel: 1,
-      flowchart: { curve: 'linear' },
-    });
-  </script>
+  <script type="text/javascript" src="scripts.min/mermaid.config.js"></script>
   <script type="text/javascript" src="scripts/bundle.js"></script>
 </body>
 </html>

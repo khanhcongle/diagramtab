@@ -95,10 +95,7 @@ class Newtab {
      "btnLogin", "btnOpenCreateUserDialog", "btnCreateUser",
      "btnForgotPassword",
      "btnLayoutRightMain", "btnLayoutLeftMain", "btnLayoutRightOnly",
-     "btnLayoutLeftOnly", "btnCopyAsHtmlText", "btnLineColorModeOn",
-     "btnLineColorModeOff", "btnEditBold", "btnEditStrikeThrough",
-     "btnFilterStrikeThroughTextModeOn", "btnFilterStrikeThroughTextModeOff",
-     "btnWingModeBoth", "btnWingModeLeftOnly", "btnWingModeRightOnly"].forEach(name => {
+     "btnLayoutLeftOnly", "btnCopyAsHtmlText"].forEach(name => {
       let element = document.querySelector("#" + name);
       element.addEventListener("click", () => {
         this.hideNavbar();
@@ -113,17 +110,6 @@ class Newtab {
         this.hideNavbar();
         this["on" + name.charAt(6).toUpperCase() + name.slice(7) + "Clicked"]();
       });
-    });
-
-    [10, 12, 14, 16, 18, 24, 36].forEach(fontSize => {
-      let element = document.querySelector("#btnFontSize" + fontSize);
-      element.addEventListener("click", ((fontSize) => {
-        return () => {
-          this.hideNavbar();
-          localStorage.fontSize = fontSize;
-          this.drawMindmap();
-        };
-      })(fontSize));
     });
 
     $("#loginDialog").on("shown.bs.modal", () => {
@@ -173,42 +159,6 @@ class Newtab {
       $("#footerBtnLayoutRightMain").show();
       $("#footerBtnLayoutLeftMain").show();
     }
-  }
-
-  onBtnEditBoldClicked() {
-    const selectionRange = this.editor.getSelectionRange();
-    const textRange = this.editor.getSession().getTextRange(selectionRange);
-    if (textRange.length > 0) {
-      this.editor.getSession().replace(selectionRange, `**${textRange}**`);
-    }
-  }
-
-  onBtnEditStrikeThroughClicked() {
-    const selectionRange = this.editor.getSelectionRange();
-    const textRange = this.editor.getSession().getTextRange(selectionRange);
-    if (textRange.length > 0) {
-      this.editor.getSession().replace(selectionRange, `~~${textRange}~~`);
-    }
-  }
-
-  onBtnLineColorModeOnClicked() {
-    this.mm.changeLineColorMode(true);
-    this.drawMindmap();
-  }
-
-  onBtnLineColorModeOffClicked() {
-    this.mm.changeLineColorMode(false);
-    this.drawMindmap();
-  }
-
-  onBtnFilterStrikeThroughTextModeOnClicked() {
-    localStorage.filterStrikeThrough = false;
-    this.drawMindmap();
-  }
-
-  onBtnFilterStrikeThroughTextModeOffClicked() {
-    localStorage.filterStrikeThrough = true;
-    this.drawMindmap();
   }
 
   onBtnLayoutRightMainClicked() {
@@ -478,23 +428,7 @@ class Newtab {
     }
   }
 
-  onBtnWingModeBothClicked() {
-    localStorage.wingMode = "both";
-    this.drawMindmap();
-  }
-
-  onBtnWingModeLeftOnlyClicked() {
-    localStorage.wingMode = "left";
-    this.drawMindmap();
-  }
-
-  onBtnWingModeRightOnlyClicked() {
-    localStorage.wingMode = "right";
-    this.drawMindmap();
-  }
-
   // Calendar
-
   renderEvents() {
     const source = this.editor.getValue();
     const root = new Parser().parse(source, this.isFilterStrikeThroughText());
@@ -785,22 +719,7 @@ class Newtab {
   }
 
   setConfigrationToUI() {
-    const filterStrikeThrough = this.isFilterStrikeThroughText();
-    document.querySelector("#btnFilterStrikeThroughTextModeOn").checked = !filterStrikeThrough;
-    document.querySelector("#btnFilterStrikeThroughTextModeOff").checked = filterStrikeThrough;
-    const lineColorMode = JSON.parse(localStorage.lineColorMode || "false");
-    document.querySelector("#btnLineColorModeOn").checked = lineColorMode;
-    document.querySelector("#btnLineColorModeOff").checked = !lineColorMode;
-    const fontSize = Number(localStorage.fontSize || "14"); // Defined at mindmap.js
-    document.querySelector(`#btnFontSize${fontSize}`).checked = true;
-    const wingMode = localStorage.wingMode || "both";
-    if (wingMode === "both") {
-      document.querySelector("#btnWingModeBoth").checked = true;
-    } else if (wingMode === "left") {
-      document.querySelector("#btnWingModeLeftOnly").checked = true;
-    } else {
-      document.querySelector("#btnWingModeRightOnly").checked = true;
-    }
+
   }
 
 }

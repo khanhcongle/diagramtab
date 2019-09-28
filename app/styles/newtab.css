@@ -1,7 +1,11 @@
-html, body {
+html, body#diagramTabId {
   height: 100%;
   margin: 0;
   background-color: white;
+}
+
+body#diagramTabId div{
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 #source {
@@ -72,7 +76,7 @@ div.canvas-container {
 
 canvas {
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   display: block;
   position: absolute;
   /*
@@ -122,10 +126,6 @@ nav {
 #history a .date {
   font-size: 0.7rem;
   color: gray;
-}
-
-#configuration {
-  min-width: 350px;
 }
 
 #calendar h2 {
