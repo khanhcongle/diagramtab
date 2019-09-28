@@ -45,15 +45,9 @@
             Edit
           </a>
           <div class="dropdown-menu" id="edit" aria-labelledby="navbarEdit">
-            <a class="dropdown-item dropdownEditItem" href="#" id="btnEditBold">Bold</a>
-            <a class="dropdown-item dropdownEditItem" href="#" id="btnEditStrikeThrough">Strike Through</a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id="btnCopyAsPlainText">Copy as Plain Text</a>
             <a class="dropdown-item" href="#" id="btnCopyAsMarkdownText">Copy as Markdown Text</a>
             <a class="dropdown-item" href="#" id="btnCopyAsHtmlText">Copy as HTML</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" id="btnExportAsPng">Export as PNG</a>
-            <a class="dropdown-item" href="#" id="btnExportAsJpeg">Export as JPEG</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" id="btnDelete">Delete</a>
           </div>
@@ -63,14 +57,13 @@
             Layout
           </a>
           <div class="dropdown-menu" id="layout" aria-labelledby="navbarLayout">
-            <a class="dropdown-item" href="#" id="btnLayoutRightMain">Focus on MindMap</a>
+            <a class="dropdown-item" href="#" id="btnLayoutRightMain">Focus on Diagram</a>
             <a class="dropdown-item" href="#" id="btnLayoutLeftMain">Focus on Text</a>
-            <a class="dropdown-item" href="#" id="btnLayoutRightOnly">MindMap only</a>
+            <a class="dropdown-item" href="#" id="btnLayoutRightOnly">Diagram only</a>
             <a class="dropdown-item" href="#" id="btnLayoutLeftOnly">Text only</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" id="btnCalendar">Calendar View</a>
           </div>
         </li>
+<!--
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarConfiguration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Style
@@ -151,6 +144,7 @@
             </form>
           </div>
         </li>
+      -->
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" id="navbarSession" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Session
@@ -201,7 +195,6 @@
     <div class="statusBar">
       <div id="statusMessage"></div>
       <div class="float-right footerButtons">
-          <img id="footerBtnCalendar" src="images/calendar.gif" title="Calendar View" />
         <img id="footerBtnLayoutRightMain" src="images/focus_mindmap.gif" title="Focus on MindMap" />
         <img id="footerBtnLayoutLeftMain" src="images/focus_text.gif" title="Focus on Text" />
         <img id="footerBtnLayoutRightOnly" src="images/mindmap.gif" title="MindMap only" />
@@ -225,22 +218,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
           <button type="button" class="btn btn-danger" id="btnConfirmYes">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="calendarDialog" class="modal fade">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Calendar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="calendar"></div>
         </div>
       </div>
     </div>

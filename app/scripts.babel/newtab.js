@@ -90,10 +90,10 @@ class Newtab {
       this.onEditorSelectionChanged();
     });
 
-    ["btnDelete", "btnConfirmYes", "btnCalendar",
+    ["btnDelete", "btnConfirmYes",
      "btnCopyAsPlainText", "btnCopyAsMarkdownText", "btnOnline",
      "btnLogin", "btnOpenCreateUserDialog", "btnCreateUser",
-     "btnForgotPassword", "btnExportAsPng", "btnExportAsJpeg",
+     "btnForgotPassword",
      "btnLayoutRightMain", "btnLayoutLeftMain", "btnLayoutRightOnly",
      "btnLayoutLeftOnly", "btnCopyAsHtmlText", "btnLineColorModeOn",
      "btnLineColorModeOff", "btnEditBold", "btnEditStrikeThrough",
@@ -107,7 +107,7 @@ class Newtab {
     });
 
     ["footerBtnLayoutRightMain", "footerBtnLayoutLeftMain", "footerBtnLayoutRightOnly",
-      "footerBtnLayoutLeftOnly", "footerBtnCalendar"].forEach(name => {
+      "footerBtnLayoutLeftOnly"].forEach(name => {
       let element = document.querySelector("#" + name);
       element.addEventListener("click", () => {
         this.hideNavbar();
@@ -332,18 +332,6 @@ class Newtab {
     this.showStatusMessage("How to Use loaded.");
   }
 
-  onBtnExportAsPngClicked() {
-    if (this.currentWork.hasContent()) {
-      this.mm.saveAsImage(this.currentWork.firstLine, "png");
-    }
-  }
-
-  onBtnExportAsJpegClicked() {
-    if (this.currentWork.hasContent()) {
-      this.mm.saveAsImage(this.currentWork.firstLine, "jpeg");
-    }
-  }
-
   onBtnForgotPasswordClicked() {
     this.updateLoginErrorMessage("");
     const email = document.querySelector("#inputEmail").value;
@@ -488,11 +476,6 @@ class Newtab {
       text += "</ul>"
       this.copyTextToClipboardViaCopyBuffer(text);
     }
-  }
-
-  onBtnCalendarClicked() {
-    this.renderEvents();
-    $("#calendarDialog").modal("show");
   }
 
   onBtnWingModeBothClicked() {

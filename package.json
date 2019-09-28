@@ -55,6 +55,7 @@
     "build": "gulp"
   },
   "dependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "bower": "^1.8.8"
   }
 }
