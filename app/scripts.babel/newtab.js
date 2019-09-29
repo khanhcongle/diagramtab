@@ -571,7 +571,9 @@ class Newtab {
     let source = this.editor.getValue();
     $("div.mermaid").text(source);
     $("div.mermaid").removeAttr("data-processed");
-    window.mermaid.init();
+    if(source !== "") {
+      window.mermaid.init();
+    }
     let root = new Parser().parse(source, this.isFilterStrikeThroughText());
     if (root) {
       this.currentWork.content = source;
