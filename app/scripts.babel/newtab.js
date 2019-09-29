@@ -1,6 +1,5 @@
 "use strict";
 
-import MindMap from "./mindmap.js";
 import Parser from "./parser.js";
 import Work from "./work.js";
 import Node from "./node.js";
@@ -24,7 +23,6 @@ class Newtab {
     this.localWorkStorage.initialize(() => {
       this.chromeWorkStorage.initialize(() => {
         this.firebaseWorkStorage.initialize(alreadyLoggedIn => {
-          this.mm = new MindMap(this, "#target");
           this.currentWork = Work.newInstance();
           this.editor = this.initializeAceEditor();
           this.calendar = this.initializeCalendar();
@@ -60,7 +58,7 @@ class Newtab {
     editor.setHighlightActiveLine(true);
     editor.renderer.setShowGutter(false);
     editor.$blockScrolling = Infinity;
-    var LanguageMode = ace.require("ace/mode/javascript").Mode;
+    var LanguageMode = ace.require("ace/mode/python").Mode;
     editor.getSession().setMode(new LanguageMode());
     editor.setTheme("ace/theme/eclipse");
 
@@ -201,7 +199,7 @@ class Newtab {
     this.timer = setTimeout(() => {
       this.showStatusMessage("Editor session changed.");
       this.typing = true;
-      this.drawMindmap(() => {
+      this.drawDiagram(() => {
         if (!this.loading) {
           this.showStatusMessage("Saving the content.");
           this.getWorkStorage().save(this.currentWork, () => {
@@ -229,7 +227,7 @@ class Newtab {
   onBtnLastClicked() {
     this.getWorkStorage().getLast(work => {
       this.load(work);
-      this.showStatusMessage("Last mindmap loaded.");
+      this.showStatusMessage("Last diagram loaded.");
     });
   }
 
@@ -259,7 +257,7 @@ class Newtab {
   onBtnNewClicked() {
     this.load(Work.newInstance());
 
-    this.showStatusMessage("New mindmap created.");
+    this.showStatusMessage("New diagram created.");
   }
 
   onBtnTopSitesClicked() {
@@ -505,16 +503,16 @@ class Newtab {
   }
 
   onWorkAdded() {
-    this.showStatusMessage("Mindmap added message received.");
+    this.showStatusMessage("Diagram added message received.");
     this.loadWorkList(() => {
       this.typing = false;
 
-      this.showStatusMessage("Handled mindmap added message and reloaded.");
+      this.showStatusMessage("Handled diagram added message and reloaded.");
     });
   }
 
   onWorkChanged(key, changedWork) {
-    this.showStatusMessage("Mindmap changed message received.");
+    this.showStatusMessage("Diagram changed message received.");
     this.loadWorkList(() => {
       if (!this.typing
         && this.currentWork
@@ -524,12 +522,12 @@ class Newtab {
       }
       this.typing = false;
 
-      this.showStatusMessage("Handled mindmap changed message and reloaded.");
+      this.showStatusMessage("Handled diagram changed message and reloaded.");
     });
   }
 
   onWorkRemoved(key, removedWork) {
-    this.showStatusMessage("Mindmap removed message received.");
+    this.showStatusMessage("Diagram removed message received.");
     this.loadWorkList(() => {
       if (this.currentWork
         && this.currentWork.created === removedWork.created) {
@@ -537,7 +535,7 @@ class Newtab {
       }
       this.typing = false;
 
-      this.showStatusMessage("Handled mindmap removed message and reloaded.");
+      this.showStatusMessage("Handled diagram removed message and reloaded.");
     });
   }
 
@@ -567,19 +565,17 @@ class Newtab {
 
   // Draw MindMap
 
-  drawMindmap(callback) {
+  drawDiagram(callback) {
     let source = this.editor.getValue();
+    this.currentWork.content = source;
     $("div.mermaid").text(source);
     $("div.mermaid").removeAttr("data-processed");
     if(source !== "") {
-      window.mermaid.init();
-    }
-    let root = new Parser().parse(source, this.isFilterStrikeThroughText());
-    if (root) {
-      this.currentWork.content = source;
-      this.mm.draw(root);
-    } else {
-      this.mm.clear();
+      try {
+        window.mermaid.init();
+      } catch (error) {
+        this.showStatusMessage("Wrong syntax");
+      }
     }
     if (callback) {
       callback();
@@ -593,7 +589,7 @@ class Newtab {
 }
 
   loadWorkList(callback) {
-    this.showStatusMessage("Loading mindmaps.");
+    this.showStatusMessage("Loading diagrams.");
 
     this.getWorkStorage().getAll(works => {
       let history = document.querySelector("#history");
@@ -663,7 +659,7 @@ class Newtab {
       });
       history.appendChild(howToUseA);
 
-      this.showStatusMessage("Loaded mindmaps.");
+      this.showStatusMessage("Loaded diagrams.");
 
       if (callback) {
         callback();
@@ -677,7 +673,7 @@ class Newtab {
     this.currentWork = work;
     this.editor.setValue(this.currentWork.content);
     this.editor.clearSelection();
-    this.drawMindmap();
+    this.drawDiagram();
     this.editor.focus();
     this.editor.gotoLine(cursorPosition.row + 1, cursorPosition.column, false);
     this.loading = false;
