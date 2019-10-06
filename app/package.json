@@ -1,0 +1,33 @@
+{
+  "name": "mindmap-tab",
+  "main": "main-electron.js",
+  "private": true,
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "devDependencies": {
+    "electron": "^6.0.11",
+    "electron-builder": "^21.2.0",
+    "electron-packager": "^14.0.6"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": true
+    },
+    "globals": {
+      "chrome": true
+    },
+    "rules": {
+      "eol-last": 0,
+      "quotes": [
+        2,
+        "single"
+      ]
+    }
+  },
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . electron-tutorial-app --overwrite --platform=win32 --prune=true --out=release-builds --version-string.CompanyName=Khafast --version-string.FileDescription=CE --version-string.ProductName=\"Diagram Tab\""
+  }
+}

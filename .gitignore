@@ -9,3 +9,4 @@ package
 app/scripts
 .DS_Store
 app/service_worker*.js
+release-builds/

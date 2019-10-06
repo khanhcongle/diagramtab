@@ -12,6 +12,9 @@ npm install
 bower install
 gulp build
 
+cd app
+npm run package
+
 License
 -------
 
