@@ -15,6 +15,7 @@ gulp build
 cd app
 npm install
 npm run package
+copy necessary module in node_modules -> khamatab.git\release-builds\electron-tutorial-app-win32-x64\resources\app
 
 License
 -------
