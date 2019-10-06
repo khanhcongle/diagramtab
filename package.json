@@ -1,5 +1,6 @@
 {
   "name": "mindmap-tab",
+  "main": "main-electron.js",
   "private": true,
   "engines": {
     "node": ">=0.8.0"
@@ -12,6 +13,10 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "del": "^1.1.1",
+    "electron": "^6.0.11",
+    "electron-builder": "^21.2.0",
+    "electron-packager": "^14.0.6",
+    "express": "^4.17.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.0",
     "gulp-cache": "^0.2.8",
@@ -28,7 +33,9 @@
     "gulp-uglify": "^1.1.0",
     "gulp-useref": "^1.1.1",
     "gulp-zip": "^3.0.2",
+    "http": "0.0.0",
     "main-bower-files": "^2.13.3",
+    "path": "^0.12.7",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "run-sequence": "^1.1.4",
@@ -52,7 +59,9 @@
     }
   },
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "start": "electron .",
+    "package": "electron-packager . electron-tutorial-app --overwrite --platform=win32 --prune=true --out=release-builds --version-string.CompanyName=Khafast --version-string.FileDescription=CE --version-string.ProductName=\"Diagram Tab\""
   },
   "dependencies": {
     "babel": "^6.23.0",
