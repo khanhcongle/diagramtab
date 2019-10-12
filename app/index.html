@@ -93,22 +93,17 @@
           <div class="mermaid" style="width: 1920px;
                                       height:1920px;">
             graph TD %%DialogDesignPattern
-                ViewGroupBean --> FirstActivityDialogBean
-                ViewGroupBean --> SecondActivityDialogBean
-                
-                FirstActivityDialogBean --> ActivitiesManagementBean
-                SecondActivityDialogBean --> ActivitiesManagementBean
-                
-                ActivitiesManagementBean --> ObjectViewBean
-                ActivitiesManagementBean --> ObjectAddOrUpdateBean
-                ActivitiesManagementBean --> ObjectForwardBean 
-                
-                ObjectViewBean --> CRUDServices
-                ObjectAddOrUpdateBean --> CRUDServices
-                ObjectForwardBean  --> ConverterServices
-                
-                CRUDServices --> Entities
-                ConverterServices --> Entities
+                New_User[New User ?] --> |"signin for backup data"| Signin["Click the Session menu"]
+                New_User --> |or try| Sequence_Diagram
+                New_User --> |or try| Flow_Diagram_Left_To_Right
+                New_User --> |or try| Flow_Diagram_Top_To_Bottom
+                New_User --> |or try| Learn_More
+
+                Sequence_Diagram --> |copy this| sequenceDiagramTopToBottom["sequenceDiagram<br/>participant Alice<br/>participant Bob<br/>Alice-&gt&gtJohn: Hello John, how are you?<br/>John->>Alice:Just fine, how are you?<br/>Alice->>John:Great"]
+                Flow_Diagram_Left_To_Right --> |copy this| leftToRightFlowchart["graph LR<br/>    task1 --> task2<br/>    task2 -.-> task3<br/> task3 --- task4"]
+                Flow_Diagram_Top_To_Bottom --> |copy this| topToBottomFlowchart["graph TB<br/>    task1 --> task2<br/>    task2 -.-> task3<br/> task3 --- task4"]
+                Learn_More --> |read this| mermaidDocument["mermaidjs.github.io"]
+                click mermaidDocument "https://mermaidjs.github.io" "this is a link"
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 mermaid.initialize({
+	securityLevel: 'loose',
 	theme: 'neutral',
 	logLevel: 3,
 	flowchart: { curve: 'linear' },
