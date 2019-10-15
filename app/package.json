@@ -1,5 +1,5 @@
 {
-  "name": "mindmap-tab",
+  "name": "diagram-tab",
   "main": "main-electron.js",
   "private": true,
   "engines": {

@@ -84,7 +84,7 @@ gulp.task("serviceWorker", () => {
 gulp.task("package", function () {
   const manifest = require("./dist/manifest.json");
   return gulp.src("dist/**")
-      .pipe($.zip("mindmap_tab-" + manifest.version + ".zip"))
+      .pipe($.zip("diagram_tab-" + manifest.version + ".zip"))
       .pipe(gulp.dest("package"));
 });
 
