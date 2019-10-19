@@ -542,9 +542,11 @@ class Newtab {
   updateBtnOnlineText() {
     if (this.useFirebase) {
       const email = this.firebaseWorkStorage.getCurrentUserEmail();
-      document.querySelector("#lblOnline").innerText = "Logout (" + email + ")";
+      document.querySelector("#lblOnline").innerText = email;
+      document.querySelector("#lblOnlineAction").innerText = "Logout";
     } else {
-      document.querySelector("#lblOnline").innerText = "Login";
+      document.querySelector("#lblOnline").innerText = "(offline)";
+      document.querySelector("#lblOnlineAction").innerText = "Login / Sign-in";
     }
   }
 
