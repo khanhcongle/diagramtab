@@ -1,6 +1,7 @@
 # DiagramTab
 
 2019-10-19: supports mermaid syntax instead of mindmap_tab syntax as original
+
 2019-08-25: this is forked from https://github.com/yoichiro/mindmap_tab
 
 ## Basic usage
