@@ -5,7 +5,7 @@
 
   <link rel="manifest" href="manifest_for_pwa.json" />
   <!-- Fix error "jQuery not found" Insert this line above script imports  -->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script type="text/javascript" src="scripts.min/electron.config.before.js"></script>
 
   <script type="text/javascript" src="service_worker_loader.js"></script>
   
@@ -219,6 +219,6 @@
   <script type="text/javascript" src="scripts/bundle.js"></script>
 
   <!-- Fix error "jQuery not found" Insert this line after script imports -->
-  <script>if (window.module) module = window.module;</script>
+  <script type="text/javascript" src="scripts.min/electron.config.after.js"></script>
 </body>
 </html>
