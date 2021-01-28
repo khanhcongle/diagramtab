@@ -6,7 +6,7 @@
     "node": ">=0.8.0"
   },
   "devDependencies": {
-    "electron": "^6.0.11",
+    "electron": "^9.4.0",
     "electron-builder": "^21.2.0",
     "electron-packager": "^14.0.6"
   },
